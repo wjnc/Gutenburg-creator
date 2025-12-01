@@ -359,10 +359,11 @@ def main():
 
     # For initial testing, process only a few segments
     # Remove max_segments parameter to process the entire book
+    # Disable cross_check and enrich due to network proxy restrictions
     output_file = creator.run(
-        cross_check=True,
-        enrich=True,
-        max_segments=5  # Remove this line to process entire book
+        cross_check=False,  # Disabled - proxy blocks Gutenberg downloads
+        enrich=False,       # Disabled - proxy blocks Wikipedia access
+        max_segments=5      # Remove this line to process entire book
     )
 
     logger.info(f"\n{'=' * 60}")
