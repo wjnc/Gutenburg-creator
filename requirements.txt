@@ -1,0 +1,32 @@
+# Project Gutenberg Downloader
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# EPUB Generation
+ebooklib>=0.18
+Pillow>=10.0.0
+
+# Wikipedia Integration
+wikipedia-api>=0.6.0
+
+# Translation (supporting multiple backends)
+anthropic>=0.18.0
+
+# Text Processing
+nltk>=3.8.1
+spacy>=3.7.0
+
+# Data Handling
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Progress Tracking
+tqdm>=4.66.0
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Logging and Debugging
+loguru>=0.7.0
