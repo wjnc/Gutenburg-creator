@@ -9,6 +9,7 @@ from loguru import logger
 
 from config import Settings
 from core import GutenbergDownloader, TextParser, EPUBGenerator, DocumentationTracker
+from core.parser import TextSegment
 from agents import TranslatorAgent, ProofreadingAgent, CrossReferenceAgent, WikipediaEnricher
 
 

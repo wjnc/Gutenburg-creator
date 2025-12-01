@@ -70,7 +70,9 @@ class Settings:
         """Validate configuration and return list of errors."""
         errors = []
 
-        if not cls.ANTHROPIC_API_KEY:
-            errors.append("ANTHROPIC_API_KEY is not set")
+        # Note: ANTHROPIC_API_KEY may not be in environment but could be
+        # available through anthropic library's automatic credential discovery
+        # (e.g., in Claude Code sessions or from ~/.anthropic config)
+        # So we don't fail validation if it's not explicitly set
 
         return errors

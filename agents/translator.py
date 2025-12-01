@@ -13,7 +13,7 @@ class TranslatorAgent:
 
     def __init__(
         self,
-        api_key: str,
+        api_key: Optional[str] = None,
         model: str = "claude-sonnet-4-5-20250929",
         temperature: float = 0.3,
         documentation_tracker: Optional[DocumentationTracker] = None
@@ -21,12 +21,16 @@ class TranslatorAgent:
         """Initialize the translator agent.
 
         Args:
-            api_key: Anthropic API key
+            api_key: Anthropic API key (optional, will use auto-discovery if not provided)
             model: Model to use
             temperature: Temperature for generation
             documentation_tracker: Tracker for documenting decisions
         """
-        self.client = anthropic.Anthropic(api_key=api_key)
+        # If api_key is None, let anthropic library use automatic credential discovery
+        if api_key:
+            self.client = anthropic.Anthropic(api_key=api_key)
+        else:
+            self.client = anthropic.Anthropic()
         self.model = model
         self.temperature = temperature
         self.doc_tracker = documentation_tracker

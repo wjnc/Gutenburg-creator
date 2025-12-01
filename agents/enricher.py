@@ -18,7 +18,7 @@ class WikipediaEnricher:
 
     def __init__(
         self,
-        api_key: str,
+        api_key: Optional[str] = None,
         model: str = "claude-sonnet-4-5-20250929",
         wiki_language: str = "nl",
         max_concepts: int = 50
@@ -26,12 +26,16 @@ class WikipediaEnricher:
         """Initialize the Wikipedia enricher.
 
         Args:
-            api_key: Anthropic API key
+            api_key: Anthropic API key (optional, will use auto-discovery if not provided)
             model: Model to use
             wiki_language: Wikipedia language code
             max_concepts: Maximum concepts to enrich per segment
         """
-        self.client = anthropic.Anthropic(api_key=api_key)
+        # If api_key is None, let anthropic library use automatic credential discovery
+        if api_key:
+            self.client = anthropic.Anthropic(api_key=api_key)
+        else:
+            self.client = anthropic.Anthropic()
         self.model = model
         self.wiki_language = wiki_language
         self.max_concepts = max_concepts
